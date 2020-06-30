@@ -40,6 +40,7 @@
                           <td>{{$siswa->alamat}}</td>
                           <td><a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm"> Edit </a>
                             <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')"> Delete </a>
+                            <a href="/siswa/{{$siswa->id}}/profile" class="btn btn-success btn-sm">Detail</a>
                           </td>
 
                         </tr>
@@ -76,6 +77,10 @@
               <input type="text" name="nama_belakang" class="form-control" id="exampleInputEmail1" aria-describedby="Masukkan Nama Belakang">
             </div>
             <div class="form-group">
+              <label for="exampleInputEmail1">Email</label>
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="Masukkan Email">
+            </div>
+            <div class="form-group">
              <label for="exampleFormControlSelect1">Jenis Kelamin</label>
              <select class="form-control" name="jenis_kelamin" id="exampleFormControlSelect1">
                <option value="L">Laki-Laki</option>
@@ -86,6 +91,7 @@
              <label for="exampleInputEmail1">Agama</label>
              <input type="text" name="agama" class="form-control" id="exampleInputEmail1" aria-describedby="Masukkan Agama">
            </div>
+
            <div class="form-group">
             <label for="exampleFormControlTextarea1">Alamat</label>
             <textarea class="form-control" name="alamat" id="exampleFormControlTextarea1" rows="3"></textarea>

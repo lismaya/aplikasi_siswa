@@ -10,7 +10,7 @@
 									<h3 class="panel-title">Input Sizing</h3>
 								</div>
 								<div class="panel-body">
-                  <form action="/siswa/{{$siswa->id}}/update" method="post">
+                  <form action="/siswa/{{$siswa->id}}/update" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nama Depan</label>
@@ -35,6 +35,10 @@
                   <label for="exampleFormControlTextarea1">Alamat</label>
                   <textarea class="form-control" name="alamat" id="exampleFormControlTextarea1" rows="3">{{$siswa->alamat}}</textarea>
                 </div>
+                <div class="form-group">
+                 <label for="exampleFormControlTextarea1">Avatar</label>
+                 <input type="file" name="avatar" class="form-control">
+               </div>
                   <button type="submit" class="btn btn-warning">Update</button>
                 </form>
 								</div>

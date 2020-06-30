@@ -19,7 +19,19 @@ class SiswaController extends Controller
     }
     public function create(Request $request)
     {
-      \App\Siswa::create($request->all());
+
+      //insert ke tabel user
+      $user = new \App\User;
+      $user->role = 'siswa';
+      $user->name = $request->nama_depan;
+      $user->email = $request->email;
+      $user->password = bcrypt('rahasia');
+    //  $user->remember_token = str_random(60);
+      $user->save();
+      //insert ke tabel siswa
+      $request->request->add(['user_id' => $user->id]);
+      $siswa = \App\Siswa::create($request->all());
+
       return redirect('/siswa')->with('sukses','Data Berhasil diinput');
     }
     public function edit($id)
@@ -29,8 +41,14 @@ class SiswaController extends Controller
     }
     public function update(Request $request, $id)
     {
+      //dd($request->all());
       $siswa = \App\Siswa::find($id);
       $siswa->update($request->all());
+      if($request->hasFile('avatar')){
+        $request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
+        $siswa->avatar = $request->file('avatar')->getClientOriginalName();
+        $siswa->save();
+      }
       return redirect('/siswa')->with('sukses','Data berhasil di update');
     }
     public function delete($id)
@@ -38,5 +56,10 @@ class SiswaController extends Controller
       $siswa = \App\Siswa::find($id);
       $siswa->delete($siswa);
       return redirect('siswa')->with('sukses','data berhasil dihapus');
+    }
+    public function profile($id)
+    {
+     $siswa = \App\Siswa::find($id);
+     return view('siswa.profile',['siswa' => $siswa]);
     }
 }
