@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" class="fullscreen-bg">
 
@@ -34,7 +35,7 @@
 								<p class="lead">Login</p>
 							</div>
 							<form class="form-auth-small" action="/postLogin" method="post">
-                {{csrf_field()}}
+								{{csrf_field()}}
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
 									<input type="email" name="email" class="form-control" id="signin-email"  placeholder="Email">
